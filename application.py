@@ -48,7 +48,7 @@ def add():
         try:
             price = float(raw_input("Enter the price: "))
             print "_______ARTICLE____PRICE____________"
-            print "       ", item, "   ", price
+            print "       ", item, "   ","%.2f" % (price)
             print "___________________________________"
             ARTICLE[item] = price
             print "Your item was added"
@@ -76,11 +76,11 @@ def sell():
         print "You have not enter items"
         add()
     else:
+        print"______ARTICLES_THAT_EXISTS_____"
         for i in ARTICLE:
-            print"______ARTICLES_THAT_EXISTS_____"
             print "article: ", i
-            print "price: ", ARTICLE[i]
-            print "______________________________"
+            print "price: ", "%.2f" % (ARTICLE[i])
+        print "______________________________"
         article2 = []
         nototal = 0
         while True:
@@ -92,7 +92,7 @@ and if you want go to the bill enter DONE"""
             print " ".join(article2)
             def bill(item_sell, nototal):
                 """ this fuction print the bill"""
-                if item_sell == "done":
+                if item_sell == "done" or item_sell == "DONE" or item_sell == "Done":
                     item_sell = "done"
                 else:
                     card = cards(DISCOUNT, article2)
@@ -135,7 +135,7 @@ and if you want go to the bill enter DONE"""
                     print "  ***************Comeback soon*****************"
                     print "     ******P.S. CHOCO CHAVO'S STORE*****"
                     menu()
-        bill(item_sell, nototal)
+            bill(item_sell, nototal)
 def cards(discount, article2):
     """make a sentence that cards if is gold make a descount of 0.05+"""
     if "gold" in article2 or "GOLD" in article2 or "Gold" in article2:
