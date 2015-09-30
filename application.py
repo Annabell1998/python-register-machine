@@ -130,13 +130,11 @@ and if you want go to the bill enter DONE"""
                 print "     ******P.S. CHOCO CHAVO'S STORE*****"
                 menu()
 def cards(item_sell, Discount,article2):
-    for i in article2:
-        if i == "gold" or i == "GOLD" or i == "Gold":
-            Discount = 0.05 
-        elif i == "silver" or i == "SILVER" or i == "Silver":
-            Discount = 0.02
-        elif (i == "gold" or i == "GOLD" or i == "Gold")and (i == "silver" or i == "SILVER" or i == "silver"):
-            Discount = 0.05
-
+    if "gold" in article2 or "GOLD" in article2 or "Gold" in article2:
+        Discount = 0.05
+    elif "Silver" in article2 or"silver" in article2 or "SILVER" in article2:
+        Discount = 0.05
+    elif ("silver" in article2 or "SILVER" in article2 or "Silver" in article2) and ("gold" in article2 or "GOLD" in article2 or "Gold" in article2):
+        Discount = 0.02
     return Discount
 menu()
