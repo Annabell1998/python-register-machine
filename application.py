@@ -16,7 +16,7 @@ def menu():
         
         1. Add item
         2. Sell articles
-        3.Exit/Quit\n"""
+        3. Exit/Quit\n"""
     selection = raw_input("       enter your option: ")
     if selection == "1":
         os.system("clear")
@@ -48,7 +48,7 @@ def add():
         try:
             price = float(raw_input("Enter the price: "))
             print "_______ARTICLE____PRICE____________"
-            print "       ", item, "   ","%.2f" % (price)
+            print "       ", item, "   ", "%.2f" % (price)
             print "___________________________________"
             ARTICLE[item] = price
             print "Your item was added"
@@ -96,6 +96,7 @@ and if you want go to the bill enter DONE"""
                     item_sell = "done"
                 else:
                     card = cards(DISCOUNT, article2)
+                card = cards(DISCOUNT, article2)
                 if item_sell == "done" or item_sell == "DONE" or item_sell == "Done":
                     os.system("clear")
                     print "\t\t\t CHOCO CHAVO'S STORE"
