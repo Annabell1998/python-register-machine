@@ -133,8 +133,9 @@ def cards(item_sell, Discount,article2):
     if "gold" in article2 or "GOLD" in article2 or "Gold" in article2:
         Discount = 0.05
     elif "Silver" in article2 or"silver" in article2 or "SILVER" in article2:
-        Discount = 0.05
-    elif ("silver" in article2 or "SILVER" in article2 or "Silver" in article2) and ("gold" in article2 or "GOLD" in article2 or "Gold" in article2):
         Discount = 0.02
+    elif ("silver" in article2 or "SILVER" in article2 or "Silver" in article2) and ("gold" in article2 or "GOLD" in article2 or "Gold" in article2):
+        Discount = 0.05
     return Discount
 menu()
+
