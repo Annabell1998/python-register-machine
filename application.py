@@ -1,4 +1,4 @@
-"""if you want to buy something you have to eneter the items you want to sell so
+"""if you want to buy something you have to enter the items you want to sell so
 that you can fill yor inventory then its you enter the items you want to buy and you
 decide if you want to buy with a gold card or a silver card if you enter each of them you
 will have a descount and then the machine will make your invoice"""
@@ -19,20 +19,20 @@ def menu():
         3. Exit/Quit\n"""
     selection = raw_input("       enter your option: ")
     if selection == "1":
-        os.system("clear")
+        os.system("reset")
         add()
     elif selection == "2":
-        os.system("clear")
+        os.system("reset")
         sell()
     elif selection == "3":
-        os.system("clear")
+        os.system("reset")
         print"\n*********Good bye, thank you for buy with us******"
         print "  ****************Comeback soon*****************"
         print "    ******P.S. CHOCO CHAVO'S STORE*****"
         sys.exit()
     else:
         print "Enter a number from 1 to 3"
-        os.system("clear")
+        os.system("reset")
         menu()
 def add():
     """This Fuction ask the user a item and the price that itmen, then save the information"""
@@ -60,17 +60,18 @@ def add():
         another = raw_input("Do you want to enter another item?  Y/N: ")
         another = another.lower()
         if another == "y":
-            os.system("clear")
+            os.system("reset")
             add()
         elif another == "n":
             again = False
-            os.system("clear")
+            os.system("reset")
             menu()
         else:
             print "Remember, enter Y/N"
             another = ""
 
 def sell():
+    LIST = []
     """this Fuction ask the user the itemas that he want buy and then print a bill"""
     if ARTICLE == {}:
         print "You have not enter items"
@@ -83,13 +84,23 @@ def sell():
         print "______________________________"
         article2 = []
         nototal = 0
-        while True:
+        Sell2 = True
+        while  Sell2 == True:
             print """if you have a card enter Gold or Silver
 and if you want go to the bill enter DONE"""
             item_sell = raw_input("enter the item you want to sell: ")
             article2.append(item_sell)
-            print "you have in your car shop"
-            print " ".join(article2)
+            if ( item_sell == "silver" or item_sell == "SILVER" or  item_sell == "Silver")\
+    or (item_sell == "gold" or item_sell == "GOLD" or  item_sell == "Gold"):
+                print "\nYou have selected a Card\n"
+            elif item_sell in ARTICLE :
+                    LIST.append(item_sell)
+                    print "\nyou have in your car shop"
+                    print ",".join(LIST)
+                    print ""
+            else: 
+                print "that item don't exists"
+                Sell2 = True
             def bill(item_sell, nototal):
                 """ this fuction print the bill"""
                 if item_sell == "done" or item_sell == "DONE" or item_sell == "Done":
@@ -98,7 +109,7 @@ and if you want go to the bill enter DONE"""
                     card = cards(DISCOUNT, article2)
                 card = cards(DISCOUNT, article2)
                 if item_sell == "done" or item_sell == "DONE" or item_sell == "Done":
-                    os.system("clear")
+                    os.system("reset")
                     print "\t\t\t CHOCO CHAVO'S STORE"
                     thename = raw_input("   client name: ")
                     thenit = raw_input("   client NIT: ")
@@ -128,14 +139,23 @@ and if you want go to the bill enter DONE"""
                         print "your descount with your card is %", card
                         print "The total with card descount is: $"+"%.2f" % (total)
                         print "-----------------------------------------"
-                    pay = float(raw_input("pay with: "))
-                    change = pay - total
-                    print "the change is: $"+"%.2f" % (change)
-                    print "the NIT:", thenit
-                    print"\n*********Good bye, thank you %s for buy with us******" % (thename)
-                    print "  ***************Comeback soon*****************"
-                    print "     ******P.S. CHOCO CHAVO'S STORE*****"
-                    menu()
+                    while True:
+                        try:
+                            pay = float(raw_input("cash: "))
+                            change = pay - total
+                            if change < 0:
+                                print "isn't enough"
+
+                            else:
+                                print "the change is: $"+"%.2f" % (change)
+                                print "the NIT:", thenit
+                                print"\n*********Good bye, thank you %s for buy with us******" % (thename)
+                                print "  ***************Comeback soon*****************"
+                                print "     ******P.S. CHOCO CHAVO'S STORE*****"
+                                menu()
+                        except ValueError:
+                            print "need money"
+
             bill(item_sell, nototal)
 def cards(discount, article2):
     """make a sentence that cards if is gold make a descount of 0.05+"""
